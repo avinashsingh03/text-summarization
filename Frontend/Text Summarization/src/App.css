@@ -1,0 +1,91 @@
+body {
+  font-family: "sans-serif";
+  /*add gradient background */
+  background: linear-gradient(to right, #76e1a4, #1cbeda);
+  
+}
+
+.App {
+  padding: 20px;
+}
+.header{
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: linear-gradient(to right, #76e1a4, #1cbeda);
+
+
+}
+.header h1, .header p {
+  color: #333;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+.input-section {
+  display: grid;
+  justify-content: center;
+}
+.input-form{
+  display: grid;
+  align-items: center;
+}
+.input-form textarea{
+  margin-bottom:5px;
+}
+.input-form button {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  width: 100px; 
+  padding: 5px;
+  margin:0 auto; 
+  cursor: pointer; 
+  border-radius: 3px;
+  border: 1px solid green;
+  color: green;
+  background-color: white;
+}
+
+.input-form button:hover {
+  background-color: green;
+  color:white;
+}
+
+.output-section{
+  width: 80%;
+  display:block;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  background-color: bisque;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow:4px 6px 4px rgba(0, 0, 0, 0.7);
+}
+.output-section button {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 0, 0);
+  color: whitesmoke;
+  font-weight: bold;
+  border: 2px;
+  border-radius: 8px;
+  width: 100px; 
+  padding: 5px;
+  margin:0 auto; 
+  cursor: pointer;
+}
+.output-section button:hover{
+  border: 1px solid rgb(255, 0, 0);
+  color: rgb(255, 0, 0);
+  background-color: white;
+
+}
