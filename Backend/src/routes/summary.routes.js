@@ -29,7 +29,7 @@ router.post('/summarize',async (req,res) => {
     }
 
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-2.0-flash",
       contents:"Generate a summary that captures the main points and key information from the provided text. The summary should be clear, coherent, and accurately reflect the original content.Summary should have heading. Use bullet points(if applicable).\n\n" + text
     });
 
