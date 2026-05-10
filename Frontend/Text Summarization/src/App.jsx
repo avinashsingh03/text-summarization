@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from './assets/vite.svg'
@@ -6,40 +7,61 @@ import axios from "axios";
 import ReactMarkdown from 'react-markdown';
 import handleDownloadPDF from './services/download_Text'
 import './App.css'
-
+const API_URL = import.meta.env.VITE_API_URL;
 
 function App() {
   const [text,setText] = useState("");
   const [message,setMessage]= useState("");
   const [showResult, setShowResult]=useState(false);
+
   const handleSubmit = async (e) =>{
-    setMessage("");
+
     e.preventDefault();
     // const formData = new FormData(e.target);
+
+    setMessage("Loading your summary..");
     const data ={
       text
     }
-    // console.log(data);
-    const response= await axios.post("http://localhost:3000/api/summary/summarize",data,{
-      headers:{
-      "Content-Type" : "application/json"
+
+    try{
+        const response = await axios.post(`${API_URL}/api/summary/summarize`,data,{
+        // const response= await axios.post("http://localhost:3000/api/summary/summarize",data,{
+          headers:{
+            "Content-Type" : "application/json"
+          }
+        });
+        
+        setMessage(response.data.summary);
+        setShowResult(true);
+    }
+    catch(error){
+      setShowResult(true);
+        if(error.response){
+
+        // Backend returned error response
+        console.log(message);
+        setMessage(error.response.data.error);
+        console.log(error.response.data.error);
+
+      } else {
+
+        // Network/server issue
+
+        setMessage("Server error. Please try again later.");
       }
-    });
-    // console.log(response);
-    setMessage(response.data);
-    setShowResult(true);
-  }
+    }
+  };
+
   const handleDownload= () => {
-    if(!message || message === "Some error occured. Try again after sometime." || message === "Enter valid Text."){
+    if(!message || message === "Enter valid Text." || message === "Some error occured. Try again after sometime." || message === "Server error. Please try again later."){
       alert('Nothing to download.')
     }
     else if(message){
       handleDownloadPDF(message);
     }
-    else{
-      alert('No Text to download');
-    }
   };
+
   return (
     <div className="App">
       <div className="header">
@@ -59,7 +81,7 @@ function App() {
         </div>
         {showResult && (
           <div className="output-section">
-          <ReactMarkdown>{message || "Loading your summary.."}</ReactMarkdown>
+          <ReactMarkdown>{message || "Loading you summary.."}</ReactMarkdown>
           <button onClick={handleDownload}>
             Download as PDF
           </button>

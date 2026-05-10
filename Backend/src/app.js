@@ -5,8 +5,7 @@ const cors= require("cors");
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true
+  origin: "http://localhost:5173"
 }));
 
 app.use(express.json());
@@ -21,14 +20,6 @@ app.get('/info', (req,res) => {
   })
 })
 
-// app.post('/text-summarization', (req, res) => {
-//   const {text} = req.body;
-//   console.log("Received text : ", text);
-//   return res.status(200).json({
-//     text: text,
-//     summary: "This is a dummy summary for the give text"
-//   })
-// })
 
 
 module.exports = app;
