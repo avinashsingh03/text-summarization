@@ -2,13 +2,11 @@ const express = require('express');
 const summaryRoutes = require('./routes/summary.routes.js');
 const cors= require("cors");
 
-
 const app = express();
 
 app.use(cors({
-  origin: "*",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  origin: "http://localhost:5173",
+  credentials: true
 }));
 
 app.use(express.json());
