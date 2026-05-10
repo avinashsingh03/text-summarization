@@ -2,6 +2,8 @@
 
 A full-stack web application for text summarization, featuring a React frontend and Node.js backend.
 
+Live link: https://text-summarization-smoky.vercel.app/
+
 ## Features
 
 - Upload and summarize text documents
